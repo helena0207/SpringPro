@@ -1,0 +1,9 @@
+package com.springbook.biz.common;
+
+import java.sql.Connection;
+
+public class JUtil {
+	public static Connection getConnection() {
+		
+	}
+}

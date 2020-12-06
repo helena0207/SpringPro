@@ -1,0 +1,9 @@
+package com.springbook.biz.common;
+
+public class AroundAdvice {
+	public Object aroundLog(ProceedingJoinPoint pjp) {
+		Object returnObj=pjp.proceed();
+		
+		return returnObj;
+	}
+}

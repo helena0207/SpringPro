@@ -1,0 +1,7 @@
+package com.springbook.biz.board.impl;
+
+
+public class BoardDAOSpring extends JdbcDaoSupport{
+	private final String BOARD_INSERT="";
+	
+}

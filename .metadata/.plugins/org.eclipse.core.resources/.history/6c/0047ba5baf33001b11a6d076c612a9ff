@@ -1,0 +1,6 @@
+package com.springbook.biz.board.impl;
+
+public class BoardDAOSpring{
+	private final String BOARD_INSERT="";
+	
+}

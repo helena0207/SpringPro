@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+
+	<context:component-scan base-package="com.springbook.biz"></context:component-scan>
+	<bean id="after" class="com.springbook.biz.common.AfterReturnningAdvice"></bean>
+	<aop:config>
+		<aop:pointcut id="getPointcut" expression="execution(* com.springbook.biz..*Impl.*(..))"/>
+		<aop:aspect ref="after">
+			<aop:after pointcut-ref="getPointcut" method="afterreLog"/>
+		</aop:aspect>
+	</aop:config>
+	
+	</aop:config>
+	<!-- 
+	* init-method 속성 : 스프링컨테이너가 디폴트 생성자를 호출한다. 객체를 생성후 멤버변수 초기화작업이 필요시
+	* destroy-method 속성 : 스프링컨테이너가 객체를 삭제 직전에 호출될 임의의 메소드지정
+	<bean id="tv" class="polymorphism.LgTV" init-method="initMethod" destroy-method="destroyMethod"/>
+	 -->
+	
+	<!-- 
+	* <bean> 을 미리 생성하지 않고 클라이언트가 요청하는 시점에 생성한다. 결국 메모리 관리를 더 효율적으로 할수 있게 된다.
+	<bean id="tv" class="polymorphism.LgTV" lazy-init="true" />
+	--> 
+	
+	<!--
+	<bean id="tv" class="polymorphism.LgTV"  scope="singleton"/>
+	* scope 속성 기본이 singleton, 스프링컨테이너에 의해 단 하나만 생성된다.
+	* GoF 디자인 패턴 - 싱글톤 패턴
+	 -->
+	
+	
+	<!-- <bean id="tv" class="polymorphism.LgTV">
+		<constructor-arg ref="sony"></constructor-arg> 생성자 인젝션, 생성자 인자로 전달할 객체의 아이디를 ref속성으로 참조한다 
+		<constructor-arg value="2700000"></constructor-arg>
+	</bean>
+	<bean id="sony" class="polymorphism.SonySpeaker"></bean> -->
+
+	 
+</beans>

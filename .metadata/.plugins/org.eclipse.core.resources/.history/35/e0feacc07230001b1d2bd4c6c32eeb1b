@@ -1,0 +1,7 @@
+package com.springbook.biz.common;
+
+public class AfterReturnningAdvice {
+	public void aftereLog() {
+		System.out.println("[사후처리]비즈니스 로직 후 수행");
+	}
+}
